@@ -8,8 +8,14 @@ export interface IUserRequest {
 
 export interface IUser extends IUserRequest {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
+}
+
+export interface IUserWithoutPassword {
+  id: string;
+  name: string;
+  email: string;
+  cellphone: string;
+  isAdm: boolean;
 }
 
 export interface IUserLogin {
