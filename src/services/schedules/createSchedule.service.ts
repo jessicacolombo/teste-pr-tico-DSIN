@@ -24,7 +24,6 @@ export const createScheduleService = async (
     time: newScheduleData.time,
   });
 
-  console.log(findSchedule);
   if (findSchedule) {
     throw new AppError(
       "There is already a schedule for this day and time.",

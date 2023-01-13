@@ -26,6 +26,18 @@ export const updateScheduleService = async (
     throw new AppError("Schedule not found.", 404);
   }
 
+  const findSchedule = await schedulesRepository.findOneBy({
+    date: newScheduleData.date,
+    time: newScheduleData.time,
+  });
+
+  if (findSchedule) {
+    throw new AppError(
+      "There is already a schedule for this day and time.",
+      401
+    );
+  }
+
   const user = await userRepository.findOneBy({
     id: userId,
   });
