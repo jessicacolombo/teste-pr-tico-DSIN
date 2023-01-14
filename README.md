@@ -28,11 +28,12 @@
     <li> Criar um arquivo .env dentro desse repositorio a partir de uma cópia do .env.example, e preencher as chaves com as configurações da sua maquina e do banco de dados. A chave port precisa ter o valor 3001; 
     <li> Em sequida, rodar o comando "yarn typeorm migration:run -d src/data-source.ts" para criar as tabelas e o usuário administrador no banco automaticamente atraves da ferramenta TypeORM.
     <li> E por fim, rodar o comando "yarn dev" pra subir o servidor localmente da API. O servidor vai estar na rota <a>http://localhost:3001</a> e voce verá no terminal a mensagem "Servidor executando" 
-    <li> Agora é com o front-end no repositório: 
+    <li> Agora é com o <a href='https://github.com/jessicacolombo/teste-pratico-DSIN-frontend'>front-end</a>
 </ol>
 
 ### Usuario administrador -> email: leila@mail.com - senha: adminPassword
 
+<br>
 <br>
 
 ## Documentação da API - Rotas
