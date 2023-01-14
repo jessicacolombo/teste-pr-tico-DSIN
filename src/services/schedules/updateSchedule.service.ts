@@ -59,7 +59,7 @@ export const updateScheduleService = async (
   ) {
     throw new AppError(
       "The reeschedules can only be made with more than 2 days to the schedule date. Call Cabeleileila Leila to complete the operation.",
-      401
+      403
     );
   }
 

@@ -1,3 +1,4 @@
+import { userWithoutPassword } from "./../../schemas/user.schema";
 import { AppError } from "./../../errors/AppError";
 import { User } from "./../../entities/user.entity";
 import AppDataSource from "../../data-source";
@@ -8,8 +9,13 @@ import jwt from "jsonwebtoken";
 export const createSessionService = async (userData: IUserLogin) => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const user = await userRepository.findOneBy({
-    email: userData.email,
+  const user = await userRepository.findOne({
+    where: {
+      email: userData.email,
+    },
+    relations: {
+      schedules: true,
+    },
   });
 
   if (!user) {
@@ -27,5 +33,9 @@ export const createSessionService = async (userData: IUserLogin) => {
     subject: user.id,
   });
 
-  return token;
+  const userToShow = await userWithoutPassword.validate(user, {
+    stripUnknown: true,
+  });
+
+  return { user: userToShow, token: token };
 };

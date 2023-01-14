@@ -19,6 +19,23 @@ export const createScheduleService = async (
     throw new AppError("User not found.", 404);
   }
 
+  const now = new Date().toLocaleDateString();
+  const [day, month, year] = now.split("/");
+
+  const [scheduledYear, scheduledMonth, scheduledDay] =
+    newScheduleData.date.split("-");
+
+  if (
+    scheduledYear < year ||
+    (scheduledYear === year && scheduledMonth < month) ||
+    (scheduledYear === year && scheduledMonth === month && scheduledDay < day)
+  ) {
+    throw new AppError(
+      "The schedules can only be made to dates in the future",
+      403
+    );
+  }
+
   const findSchedule = await schedulesRepository.findOneBy({
     date: newScheduleData.date,
     time: newScheduleData.time,

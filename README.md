@@ -59,7 +59,7 @@ Resposta esperada:
 
 **POST** /login <br>
 
-Rota para logar na aplicação. Retorna um token, informação que será utilizada nas requisições em que é necessário autenticação.
+Rota para logar na aplicação. Retorna um token, informação que será utilizada nas requisições em que é necessário autenticação, e as informações do usuário.
 
 Formato da requisição:
 
@@ -76,6 +76,13 @@ Resposta esperada:
 200
 
 {
+    "user": {
+		"id": "46638310-be81-4802-9c5b-5b0339a375db",
+		"name": "Cabeleileila Leila",
+		"email": "leila@mail.com",
+		"cellphone": "14123456789",
+		"isAdm": true
+	},
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxlaWxhQG1haWwuY29tI..."
 }
 ```
